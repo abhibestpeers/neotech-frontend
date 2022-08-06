@@ -2,8 +2,8 @@ import http from "./http-common";
 import { EmployeeData } from "./types";
 
 const EmployeeDataService  = {
-  async getAll() {
-    return http.get<Array<EmployeeData>>("/employees");
+  async getAll(query:String) {
+    return http.get<Array<EmployeeData>>(`/employees${query ? query : ""}`);
   },
   async get(id: string) {
     return http.get<EmployeeData>(`/employees/id/${id}`);
